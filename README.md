@@ -1,1 +1,1 @@
-# Pyramid_Ajax_Example
+# Pyramid_Ajax_MongoDB_Example
