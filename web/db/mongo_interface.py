@@ -1,6 +1,5 @@
 import pymongo
 from bson import ObjectId, json_util
-import json
 
 
 class MongoApi(object):
