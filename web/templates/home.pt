@@ -1,0 +1,47 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+        <div class="jumbotron text-center">
+            <h1>${web}</h1>
+        </div>
+        <form id="my-form">
+            <div class="form-group text-center">
+                <input type="text" id="name" placeholder="Name"/>
+            </div>
+            <div class="form-group text-center">
+                <input type="text" id="description" placeholder="description"/>
+            </div>
+            <div class="form-group text-center">
+                <input type="text" id="price" placeholder="Price"/>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    <div class="container">
+    <div tal:condition="not products">
+        There is no any persons
+    </div>
+    <div tal:condition="products">
+        <table id="prodList" class="table table-striped text-left">
+            <tbody id="dynamic">
+                <div tal:repeat="p products">
+                    <tr id="row_${p._id}">
+                        <!-- <td>${repeat.p.number}</td> -->
+                        <td>${p.name}</td>
+                        <td>${p.description}</td>
+                        <td>${p.price}</td>
+                        <td>
+                            <button type="button" class="removeItem btn btn-danger" id="${p._id}">remove</button>
+                        </td>
+                    </tr>
+                </div>
+            </tbody>
+        </table>
+    </div>
+    </div>
+
+    <script type="text/javascript" src="${request.static_url('web:static/js/jquery.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('web:static/js/processForm.js')}"></script>
+</body>
