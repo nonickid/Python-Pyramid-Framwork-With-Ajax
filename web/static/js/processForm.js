@@ -16,10 +16,10 @@
             }),
             processData: false,
             success: function (data, textStatus, jQxhr) {
-                let row = "<tr id='row_" + data._id.$oid +  "'><td>" + data.name +
-                        "</td><td>" + data.description +
-                        "</td><td>" + data.price +
-                        "</td><td><button type='button' class='removeItem btn btn-danger' id='" + data._id.$oid + "'>remove</button></td></tr>";
+                let row = "<tr id='row_" + data._id.$oid +  "' class='row'><td class='col-sm-3'>" + data.name +
+                        "</td><td class='col-sm-3'>" + data.description +
+                        "</td><td class='col-sm-3'>" + data.price +
+                        "</td><td class='col-sm-3'><button type='button' class='removeItem btn btn-danger' id='" + data._id.$oid + "'>remove</button></td></tr>";
                 $('#dynamic').append(row);
                 $('#noProducts h3').remove()
             },

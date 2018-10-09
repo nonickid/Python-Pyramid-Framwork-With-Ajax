@@ -20,19 +20,19 @@
             </div>
         </form>
     <div class="container">
-        <table id="prodList" class="table table-striped text-left">
+        <table id="prodList" class="table table-striped text-center">
             <tbody id="dynamic">
                 <div tal:condition="not products" class="text-center" id="noProducts">
                         <h3>There is no any products</h3>
                 </div>
                 <div tal:condition="products">
                 <div tal:repeat="p products">
-                    <tr id="row_${p._id}">
+                    <tr id="row_${p._id}" class="row">
                         <!-- <td>${repeat.p.number}</td> -->
-                        <td>${p.name}</td>
-                        <td>${p.description}</td>
-                        <td>${p.price}</td>
-                        <td>
+                        <td class="col-sm-3">${p.name}</td>
+                        <td class="col-sm-3">${p.description}</td>
+                        <td class="col-sm-3">${p.price}</td>
+                        <td class="col-sm-3">
                             <button type="button" class="removeItem btn btn-danger" id="${p._id}">remove</button>
                         </td>
                     </tr>
