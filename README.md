@@ -4,7 +4,7 @@
 
 #### Requirments:
 
-**Following software have to be installed to run pyramid app successful.**
+**Following software have to be installed to run pyramid app.**
 * **Docker** 
 * **Python3**
 * **Pip**
