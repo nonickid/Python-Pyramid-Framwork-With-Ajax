@@ -13,8 +13,8 @@
 
 Official MongoDB docker image is used to start database instance
 ```
-$ docker pull mongodb:latest
-$ docker run -d --name mongodba -p 27017:27017  mongo
+$ docker pull mongo:latest
+$ docker run -d --name mongodba -p 27017:27017 mongo
 ```
 
 ##### Application installation
