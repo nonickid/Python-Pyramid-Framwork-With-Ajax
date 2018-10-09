@@ -21,6 +21,7 @@
                         "</td><td>" + data.price +
                         "</td><td><button type='button' class='removeItem btn btn-danger' id='" + data._id.$oid + "'>remove</button></td></tr>";
                 $('#dynamic').append(row);
+                $('#noProducts h3').remove()
             },
             error: function (jqHdr, test, error) {
                 console.log("Error")
@@ -46,6 +47,9 @@
             processData: false,
             success: function (data) {
                 $('#row_' + id + '').remove();
+                if (data.count === 0) {
+                    $('#noProducts').append('<h3>There is no any products</h3>')
+                };
              },
             error: function (jqHdr, test, error) {
                 console.log("Error");

@@ -21,7 +21,7 @@ def add_product(request):
 @view_config(route_name='remove', renderer='json')
 def remove_product(request):
     product_id = request.json_body
-    mongo_obj.remove_product(product_id)
+    doc_count = mongo_obj.remove_product(product_id)
     # response = Response("Failed")
     # response.status_int = 500
-    return product_id
+    return {'count': doc_count}

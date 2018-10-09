@@ -1,4 +1,5 @@
 import pymongo
+import json
 from bson import ObjectId, json_util
 
 
@@ -21,8 +22,10 @@ class MongoApi(object):
         try:
             self.db = conn.shop
             self.products = self.db.products
-            prod = self.products.find()
-            return prod
+            if self.products.count_documents({}):
+                prod = self.db.products.find()
+                return prod
+            return None
         except pymongo.errors.ServerSelectionTimeoutError as e:
             return "MongoDB server connection timeout"
 
@@ -37,6 +40,6 @@ class MongoApi(object):
     def remove_product(self, objectId):
         try:
             self.db.products.delete_one({'_id': ObjectId(objectId['id'])})
-            return True
+            return self.db.products.count_documents({})
         except pymongo.errors.PyMongoError as e:
             return False
