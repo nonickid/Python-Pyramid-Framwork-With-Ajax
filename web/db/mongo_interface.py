@@ -13,10 +13,12 @@ class MongoApi(object):
         self.products = ''
 
     def connect(self):
-        conn = pymongo.MongoClient(self.url, username=self.user, password=self.password, serverSelectionTimeoutMS=2000)
-        if conn:
+        try:
+            conn = pymongo.MongoClient(self.url, username=self.user, password=self.password, serverSelectionTimeoutMS=2000)
+            conn.server_info()
             return conn
-        return None
+        except pymongo.errors.PyMongoError as e:
+            return None
 
     def get_products(self, conn):
         try:
@@ -25,9 +27,12 @@ class MongoApi(object):
             if self.products.count_documents({}):
                 prod = self.db.products.find()
                 return prod
-            return None
-        except pymongo.errors.ServerSelectionTimeoutError as e:
-            return None
+        except pymongo.errors.PyMongoError as e:
+            print(e)
+            return False
+        except AttributeError as e:
+            print(e)
+            return False
 
     def add_product(self, product):
         try:
@@ -35,6 +40,10 @@ class MongoApi(object):
             inserted = self.products.find_one({'_id': ObjectId(document_id.inserted_id)})
             return json_util.dumps(inserted)
         except pymongo.errors.PyMongoError as e:
+            print(e)
+            return False
+        except AttributeError as e:
+            print(e)
             return False
 
     def remove_product(self, objectId):
@@ -42,4 +51,8 @@ class MongoApi(object):
             self.db.products.delete_one({'_id': ObjectId(objectId['id'])})
             return self.db.products.count_documents({})
         except pymongo.errors.PyMongoError as e:
+            print(e)
+            return False
+        except AttributeError as e:
+            print(e)
             return False

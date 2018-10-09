@@ -24,7 +24,12 @@
             <tbody id="dynamic">
                 <div id="noProducts" class="text-center">
                     <div tal:condition="not products">
-                        <h3>There is no any products</h3>
+                        <div tal:condition="connectionErr">
+                            <h4>${connectionErr}</h4>
+                        </div>
+                        <div tal:condition="not connectionErr">
+                            <h4>There is no any products</h4>
+                        </div>
                     </div>
                 </div>
                 <div tal:condition="products">

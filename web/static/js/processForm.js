@@ -15,15 +15,20 @@
                 "price": $('#price').val()
             }),
             processData: false,
-            success: function (data, textStatus, jQxhr) {
-                let row = "<tr id='row_" + data._id.$oid +  "' class='row'><td class='col-sm-3'>" + data.name +
-                        "</td><td class='col-sm-3'>" + data.description +
-                        "</td><td class='col-sm-3'>" + data.price +
-                        "</td><td class='col-sm-3'><button type='button' class='removeItem btn btn-danger' id='" + data._id.$oid + "'>remove</button></td></tr>";
-                $('#dynamic').append(row);
-                $('#noProducts h3').remove()
+            success: function (data) {
+                if (data['connectionErr']) {
+                    $('#noProducts h4').remove()
+                    $('#noProducts').append('<h4>' + data['connectionErr'] + '</h4>')
+                } else {
+                    let row = "<tr id='row_" + data['_id']['$oid'] + "' class='row'><td class='col-sm-3'>" + data['name'] +
+                        "</td><td class='col-sm-3'>" + data['description'] +
+                        "</td><td class='col-sm-3'>" + data['price'] +
+                        "</td><td class='col-sm-3'><button type='button' class='removeItem btn btn-danger' id='" + data['_id']['$oid'] + "'>remove</button></td></tr>";
+                    $('#dynamic').append(row);
+                    $('#noProducts h4').remove()
+                }
             },
-            error: function (jqHdr, test, error) {
+            error: function () {
                 console.log("Error")
             }
         });
@@ -46,12 +51,18 @@
             }),
             processData: false,
             success: function (data) {
-                $('#row_' + id + '').remove();
-                if (data.count === 0) {
-                    $('#noProducts').append('<h3>There is no any products</h3>')
-                };
+                if (data['connectionErr']) {
+                    $('#noProducts h4').remove()
+                    $('#noProducts').append('<h4>' + data['connectionErr'] + '</h4>')
+                } else {
+                    $('#row_' + id + '').remove();
+                    $('#noProducts h4').remove()
+                    if (data['count'] === 0) {
+                        $('#noProducts').append('<h4>There is no any products</h4>')
+                    }
+                }
              },
-            error: function (jqHdr, test, error) {
+            error: function () {
                 console.log("Error");
             }
         });
