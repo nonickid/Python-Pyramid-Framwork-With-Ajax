@@ -13,7 +13,7 @@ class MongoApi(object):
         self.products = ''
 
     def connect(self):
-        conn = pymongo.MongoClient(self.url, username=self.user, password=self.password)
+        conn = pymongo.MongoClient(self.url, username=self.user, password=self.password, serverSelectionTimeoutMS=2000)
         if conn:
             return conn
         return None
@@ -27,7 +27,7 @@ class MongoApi(object):
                 return prod
             return None
         except pymongo.errors.ServerSelectionTimeoutError as e:
-            return "MongoDB server connection timeout"
+            return None
 
     def add_product(self, product):
         try:
