@@ -1,4 +1,4 @@
-# Python Pyramid Framework with jQuery/Ajax and MongoDB example
+# Example of Python Pyramid Web Framework with jQuery/Ajax and MongoDB
 
 ## Installation instruction
 
