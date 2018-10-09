@@ -22,8 +22,10 @@
     <div class="container">
         <table id="prodList" class="table table-striped text-center">
             <tbody id="dynamic">
-                <div tal:condition="not products" class="text-center" id="noProducts">
+                <div id="noProducts" class="text-center">
+                    <div tal:condition="not products">
                         <h3>There is no any products</h3>
+                    </div>
                 </div>
                 <div tal:condition="products">
                 <div tal:repeat="p products">
