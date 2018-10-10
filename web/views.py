@@ -1,5 +1,6 @@
 from pyramid.view import view_config
 # from pyramid.response import Response
+from pyramid.httpexceptions import HTTPFound
 from web.db.mongo_interface import MongoApi
 import json
 
@@ -19,7 +20,12 @@ def home(request):
     return {'web': 'Pyramid and Ajax Example', 'products': products, 'connectionErr': None}
 
 
-@view_config(route_name='add', renderer='json')
+@view_config(route_name='add', request_method='GET')
+def add_product_get(request):
+    return HTTPFound(location='/')
+
+
+@view_config(route_name='add', renderer='json', request_method='POST')
 def add_product(request):
     product = mongodb_obj.add_product(request.json_body)
     if product is False:
@@ -27,7 +33,12 @@ def add_product(request):
     return json.loads(product)
 
 
-@view_config(route_name='remove', renderer='json')
+@view_config(route_name='remove', request_method='GET')
+def remove_product_get(request):
+    return HTTPFound(location='/')
+
+
+@view_config(route_name='remove', renderer='json', request_method='POST')
 def remove_product(request):
     product_id = request.json_body
     doc_count = mongodb_obj.remove_product(product_id)
