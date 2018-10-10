@@ -3,8 +3,10 @@ from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPFound
 from web.db.mongo_interface import MongoApi
 import json
+import os
 
-mongodb_obj = MongoApi('127.0.0.1')
+mongodb_url = os.getenv('MONGO_DB_URL', '127.0.0.1')
+mongodb_obj = MongoApi(mongodb_url)
 conn = None
 
 
