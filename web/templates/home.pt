@@ -17,6 +17,7 @@
             }
             img {
                 height: 60px;
+                text-align: center;
             }
             .actions {
                 text-align: center;
@@ -36,9 +37,7 @@
                 padding: 10px;
                 border-bottom: 1px solid #4467b8;
             }
-            #prodList {
-                margin-top: 40px;
-            }
+
 
         </style>
         <div class="container images">
