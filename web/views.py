@@ -17,9 +17,9 @@ def home(request):
         conn = mongodb_obj.connect()
     products = mongodb_obj.get_products(conn)
     if products is False:
-        return {'web': 'Pyramid and Ajax Example', 'products': None,
+        return {'web': 'Python Pyramid Framework and jQuery/Ajax example', 'products': None,
                 'connectionErr': 'Getting database records failed. Check database connection'}
-    return {'web': 'Pyramid and Ajax Example', 'products': products, 'connectionErr': None}
+    return {'web': 'Python Pyramid Framework and jQuery/Ajax example', 'products': products, 'connectionErr': None}
 
 
 @view_config(route_name='add', request_method='GET')

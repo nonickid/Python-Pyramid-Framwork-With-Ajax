@@ -18,7 +18,7 @@
             success: function (data) {
                 if (data['connectionErr']) {
                     $('#noProducts h4').remove()
-                    $('#noProducts').append('<h4>' + data['connectionErr'] + '</h4>')
+                    $('#noProducts').append('<h4 class="border-msg">' + data['connectionErr'] + '</h4>')
                 } else {
                     let row = "<tr id='row_" + data['_id']['$oid'] + "' class='row'><td class='col-sm-3'>" + data['name'] +
                         "</td><td class='col-sm-3'>" + data['description'] +
@@ -53,12 +53,12 @@
             success: function (data) {
                 if (data['connectionErr']) {
                     $('#noProducts h4').remove()
-                    $('#noProducts').append('<h4>' + data['connectionErr'] + '</h4>')
+                    $('#noProducts').append('<h4 class="border-msg">' + data['connectionErr'] + '</h4>')
                 } else {
                     $('#row_' + id + '').remove();
                     $('#noProducts h4').remove()
                     if (data['count'] === 0) {
-                        $('#noProducts').append('<h4>There is no any products</h4>')
+                        $('#noProducts').append('<h4 class="border-msg">There is no any products</h4>')
                     }
                 }
              },
