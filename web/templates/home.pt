@@ -32,6 +32,13 @@
                 margin-right: auto;
                 border: 1px solid red;
             }
+            .db_row{
+                padding: 10px;
+                border-bottom: 1px solid #4467b8;
+            }
+            #prodList {
+                margin-top: 40px;
+            }
 
         </style>
         <div class="container images">
@@ -62,9 +69,9 @@
                 <button type="submit" class="btn btn-primary">Add product</button>
             </div>
         </form>
-    <div class="container">
-        <table id="prodList" class="table table-striped text-center">
-            <tbody id="dynamic">
+
+        <div class="container">
+            <div id="dynamic">
                 <div id="noProducts" class="text-center">
                     <div tal:condition="not products">
                         <div tal:condition="connectionErr">
@@ -76,21 +83,19 @@
                     </div>
                 </div>
                 <div tal:condition="products">
-                <div tal:repeat="p products">
-                    <tr id="row_${p._id}" class="row">
-                        <!-- <td>${repeat.p.number}</td> -->
-                        <td class="col-sm-3">${p.name}</td>
-                        <td class="col-sm-3">${p.description}</td>
-                        <td class="col-sm-3">${p.price}</td>
-                        <td class="col-sm-3">
-                            <button type="button" class="removeItem btn btn-danger" id="${p._id}">remove</button>
-                        </td>
-                    </tr>
+                    <div tal:repeat="p products">
+                        <div id="row_${p._id}" class="row justify-content-md-center align-items-center db_row">
+                            <div class="col-sm-3 text-center">${p.name}</div>
+                            <div class="col-sm-3 text-center">${p.description}</div>
+                            <div class="col-sm-3 text-center">${p.price}</div>
+                            <div class="col-sm-3 text-center">
+                                <button type="button" class="removeItem btn btn-danger" id="${p._id}">remove</button>
+                            </div>
+                    </div>
+                    </div>
                 </div>
-                </div>
-            </tbody>
-        </table>
-    </div>
+            </div>
+        </div>
 
     <script type="text/javascript" src="${request.static_url('web:static/js/jquery.js')}"></script>
     <script type="text/javascript" src="${request.static_url('web:static/js/processForm.js')}"></script>

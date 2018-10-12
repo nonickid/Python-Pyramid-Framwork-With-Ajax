@@ -20,10 +20,13 @@
                     $('#noProducts h4').remove()
                     $('#noProducts').append('<h4 class="border-msg">' + data['connectionErr'] + '</h4>')
                 } else {
-                    let row = "<tr id='row_" + data['_id']['$oid'] + "' class='row'><td class='col-sm-3'>" + data['name'] +
-                        "</td><td class='col-sm-3'>" + data['description'] +
-                        "</td><td class='col-sm-3'>" + data['price'] +
-                        "</td><td class='col-sm-3'><button type='button' class='removeItem btn btn-danger' id='" + data['_id']['$oid'] + "'>remove</button></td></tr>";
+                    let row = "<div id='row_" + data['_id']['$oid'] +
+                        "' class='row justify-content-md-center align-items-center db_row'><div class='col-sm-3 text-center'>"
+                        + data['name'] +
+                        "</div><div class='col-sm-3 text-center'>" + data['description'] +
+                        "</div><div class='col-sm-3 text-center'>" + data['price'] +
+                        "</div><div class='col-sm-3 text-center'><button type='button' class='removeItem btn btn-danger' id='"
+                        + data['_id']['$oid'] + "'>remove</button></div></div>";
                     $('#dynamic').append(row);
                     $('#noProducts h4').remove()
                 }
