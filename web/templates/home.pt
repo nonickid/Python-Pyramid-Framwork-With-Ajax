@@ -1,47 +1,10 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${request.static_url('web:static/css/style.css')}">
 </head>
 <body>
-
-        <style>
-            form {
-                padding: 30px;
-                max-width: 450px;
-                margin-left: auto;
-                margin-right: auto;
-                background-color: #4467b8;
-                border: 1px solid blue;
-            }
-            input{
-                margin: 10px;
-            }
-            img {
-                height: 60px;
-                text-align: center;
-            }
-            .actions {
-                text-align: center;
-            }
-            
-            .images {
-                padding: 40px;
-            }
-            .border-msg {
-                padding: 30px;
-                max-width: 750px;
-                margin-left: auto;
-                margin-right: auto;
-                border: 1px solid red;
-            }
-            .db_row{
-                padding: 10px;
-                border-bottom: 1px solid #4467b8;
-            }
-
-
-        </style>
         <div class="container images">
-            <div class="row">
+            <div class="row" id="logo">
                 <div class="col-sm">
                     <img src="${request.static_url('web:static/python-logo.png')}">
                 </div>
@@ -56,13 +19,10 @@
                 </div>
             </div>
         </div>
-
-        <!-- <div style="background: transparent !important;" class="jumbotron text-center">
-            <h1>${web}</h1>
-        </div> -->
-        <form id="my-form">
-                <input class="form-control" type="text" id="name" placeholder="Name" required/>
-                <input class="form-control" type="text" id="description" placeholder="Description" required/>
+        <form id="add-form">
+                <input class="form-control" type="text" id="name" placeholder="Product Name" required/>
+                <input class="form-control" type="text" id="department" placeholder="Department" required/>
+                <textarea id="description" class="form-control" form="add-form" placeholder="Description" required></textarea>
                 <input class="form-control" type="text" id="price" placeholder="Price" required/>
             <div class="actions">
                 <button type="submit" class="btn btn-primary">Add product</button>
@@ -73,23 +33,26 @@
             <div id="dynamic">
                 <div id="noProducts" class="text-center">
                     <div tal:condition="not products">
-                        <div tal:condition="connectionErr">
-                            <h4 class="border-msg">${connectionErr}</h4>
+                        <div tal:condition="dbErr">
+                            <h4 class="border-msg">${dbErr}</h4>
                         </div>
-                        <div tal:condition="not connectionErr">
+                        <div tal:condition="not dbErr">
                             <h4 class="border-msg">There is no any products</h4>
                         </div>
                     </div>
                 </div>
                 <div tal:condition="products">
                     <div tal:repeat="p products">
-                        <div id="row_${p._id}" class="row justify-content-md-center align-items-center db_row">
-                            <div class="col-sm-3 text-center">${p.name}</div>
-                            <div class="col-sm-3 text-center">${p.description}</div>
-                            <div class="col-sm-3 text-center">${p.price}</div>
-                            <div class="col-sm-3 text-center">
-                                <button type="button" class="removeItem btn btn-danger" id="${p._id}">remove</button>
+                        <div class="row align-items-center justify-content-md-center db_row row_${p._id}">
+                            <div class="col-sm-3 text-center" id="prod_val">${p.name}</div>
+                            <div class="col-sm-3 text-center" id="dep_val">${p.department}</div>
+                            <div class="col-sm-2 text-center" id="price_val" >${p.price}</div>
+                            <div class="col-sm-4 text-right">
+                                <button type="button" class="detailsItem btn btn-info" id="${p._id}">Show</button>
+                                <button type="button" class="editItem btn btn-primary" id="${p._id}">Edit</button>
+                                <button type="button" class="removeItem btn btn-danger" id="${p._id}">Remove</button>
                             </div>
+                        <p class="col-sm-8 text-center" id="desc_${p._id}">${p.description}</p>
                     </div>
                     </div>
                 </div>
@@ -97,5 +60,9 @@
         </div>
 
     <script type="text/javascript" src="${request.static_url('web:static/js/jquery.js')}"></script>
-    <script type="text/javascript" src="${request.static_url('web:static/js/processForm.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('web:static/js/add.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('web:static/js/remove.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('web:static/js/details.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('web:static/js/update.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('web:static/js/changeForm.js')}"></script>
 </body>

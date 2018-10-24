@@ -1,0 +1,62 @@
+#add-form {
+    padding: 30px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #4467b8;
+    border: 1px solid blue;
+}
+
+#change-form {
+    padding: 30px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input, textarea {
+    margin: 10px;
+}
+
+img {
+    height: 60px;
+    text-align: center;
+}
+
+#description {
+    resize: none;
+}
+
+#dynamic button, a {
+    margin: 2px;
+    width: 100px;
+}
+
+.actions {
+    text-align: center;
+}
+
+.images {
+    padding: 40px;
+}
+
+.border-msg {
+    padding: 30px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid red;
+}
+.db_row {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-top: 1px solid #4467b8;
+}
+
+[id^="desc_"] {
+    display: none;
+    padding: 5px;
+    margin: 2px auto auto 2px;
+    background-color: rgba(164, 166, 163, 0.33);
+}
+

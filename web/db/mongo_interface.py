@@ -46,6 +46,22 @@ class MongoApi(object):
             print(e)
             return False
 
+    def update_product(self, product):
+        try:
+            product_id = {"_id": ObjectId(product['id'])}
+            product.pop('id')
+            update = self.db.products.update(product_id, {'$set': product})
+            return update['nModified']
+        except pymongo.errors.PyMongoError as e:
+            print(e)
+            return False
+        except AttributeError as e:
+            print(e)
+            return False
+        except KeyError as e:
+            print(e)
+            return False
+
     def remove_product(self, objectId):
         try:
             self.db.products.delete_one({'_id': ObjectId(objectId['id'])})
