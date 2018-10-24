@@ -30,12 +30,10 @@
                         + data['_id']['$oid'] + "'>Remove</button>"
                         + "</div>";
 
-                     let description = "<div class='row row_" + data['_id']['$oid']
-                         + " justify-content-md-center align-items-center'>"
-                         + "<div class='col-md-12 text-center' id='desc_"
+                     let description = "<p class='col-sm-8 text-center' id='desc_"
                          + data['_id']['$oid'] + "'>"
-                         + data['description'] + "</div>"
-                         + "</div>";
+                         + data['description'] +
+                         + "</p>";
 
                      let row = "<div class='row align-items-center db_row row_"
                         + data['_id']['$oid'] + "'><div class='col-sm-3 text-center' id='prod_val'>"
@@ -43,8 +41,8 @@
                         + "<div class='col-sm-3 text-center' id='dep_val'>" + data['department'] + "</div>"
                         + "<div class='col-sm-2 text-center' id='price_val'>" + data['price'] + "</div>"
                         + buttons
-                        + "</div>"
-                        + description;
+                        + description
+                        + "</div>";
 
                     $('#dynamic').append(row);
                     $('#noProducts h4').remove()
