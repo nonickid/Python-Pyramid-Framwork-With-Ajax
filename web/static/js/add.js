@@ -35,7 +35,7 @@
                          + data['description'] +
                          + "</p>";
 
-                     let row = "<div class='row align-items-center db_row row_"
+                     let row = "<div class='row align-items-center justify-content-md-center db_row row_"
                         + data['_id']['$oid'] + "'><div class='col-sm-3 text-center' id='prod_val'>"
                         + data['name'] + "</div>"
                         + "<div class='col-sm-3 text-center' id='dep_val'>" + data['department'] + "</div>"
