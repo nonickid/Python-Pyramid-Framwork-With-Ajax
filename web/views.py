@@ -28,6 +28,7 @@ def add_product_get(request):
 
 @view_config(route_name='add', renderer='json', request_method='POST')
 def add_product(request):
+    print(request.json_body)
     product = mongodb_obj.add_product(request.json_body)
     if product is False:
         return {'dbErr': 'Adding record failed. Check database connection'}

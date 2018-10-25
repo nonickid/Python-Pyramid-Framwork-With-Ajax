@@ -32,7 +32,7 @@
 
                      let description = "<p class='col-sm-8 text-center' id='desc_"
                          + data['_id']['$oid'] + "'>"
-                         + data['description'] +
+                         + data['description']
                          + "</p>";
 
                      let row = "<div class='row align-items-center justify-content-md-center db_row row_"
