@@ -6,7 +6,6 @@ $(document).ready(function () {
         let price = $(this).parent('div').parent('div').find('#price_val').text()
         let desc = $('#desc_' + id).text();
 
-        console.log(desc);
 
         if ($('#desc_' + id).is(':visible')) {
             $('#desc_' + id).toggle();
