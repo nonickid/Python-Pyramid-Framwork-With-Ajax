@@ -17,7 +17,7 @@
 
 **To start application:**
 ```
-$ git clone git@github.com:nonickid/pyramid_ajax_example.git web
+$ git clone https://github.com/nonickid/Python-Pyramid-Framwork-With-Ajax.git web
 $ cd web
 docker-compose up -d --build
 ```
